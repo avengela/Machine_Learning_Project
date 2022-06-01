@@ -2,7 +2,7 @@
 Final project Machine Learning - CDV 2022
 
 
-#Task
+# Task
 The data consists of 2 splits train_data.csv and test_data.csv. There are numeric observations labelled either -1 or +1. Labels for the training data are located in in train_labels.csv. 
 The aim of the project is to predict labels for the testing data.
 

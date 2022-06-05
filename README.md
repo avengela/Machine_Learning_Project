@@ -11,4 +11,4 @@ Save predictions in test_labels.csv,
 Prepare a report (saved as report.md)with the explanations on how you came up with the solution. What obstacles you faced and how did you solve them. Add also information about data quality and so on.
 
 # Dataset
-The size of the dataset for this project is to large for github repo (exceeds GitHub's file size limit of 100.00 MB). The dataset can be obtained from https://drive.google.com/drive/folders/1K4IQxSH--gfMZdovzGfuYjDXUF1r2TqF?usp=sharing
+The size of the dataset for this project is to large for github repo (exceeds GitHub's file size limit of 100.00 MB). The dataset can be obtained from [here](https://drive.google.com/drive/folders/1K4IQxSH--gfMZdovzGfuYjDXUF1r2TqF?usp=sharing)

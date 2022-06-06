@@ -15,5 +15,6 @@ dependencies:
   - scikit-learn
   - scipy
   - vega
+  - neptune-client
   - pip:
     - git+https://github.com/hyperopt/hyperopt-sklearn.git

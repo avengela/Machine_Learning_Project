@@ -16,5 +16,12 @@ dependencies:
   - scipy
   - vega
   - neptune-client
+  - joblib
+  - pip
+  - hpsklearn
+  - neptune-optuna
+  - imbalanced-learn
+  - hyperopt
+  - future == 0.13.1
   - pip:
     - git+https://github.com/hyperopt/hyperopt-sklearn.git

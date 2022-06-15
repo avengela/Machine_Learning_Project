@@ -34,7 +34,7 @@ Do poprawy:
 
 
 1) EDA - Wizualizacja - do eda, PCA, wprowadzić tu standaryzację <- Jules
-     Zmienić uproszczony fit transform dla standaryzacji .fit. .transform() dla train i test <- Angela
+     <\n>Zmienić uproszczony fit transform dla standaryzacji .fit. .transform() dla train i test <- Angela
      3) W preprocesingu użyć stratify from sklearn.model_selection import StratifiedKFold (?) <- Angela
      
 3) Wybór metryka - Angela

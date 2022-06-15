@@ -19,15 +19,42 @@ ________
 Do poprawy:
 
 1) Podzielić EDA, preprocesing z przerobieniem danych, Grid search, validację, efekt końcowy z porównaniem danych wejściowych przechodzących przez najlepsza metodę
-    jako osobne .py (EDA może być jupiter notebookiem)
-2) Zastanowić się nad metryką f1 score <- nie jest zła, ale może coś jeszcze przerobić
-3) W preprocesingu użyć stratify from sklearn.model_selection import StratifiedKFold (?)
-4) Zmienić uproszczony fit transform dla standaryzacji .fit. .transform() dla train i test 
-5) Dołączyć baseline - może być dummy classifier ale musimy wiedzieć jak przedstawia sie score przed i móc porównać potem
-6) Sprawdzić shapy przy samplingu i zastanowić się nad tą częscią (moze lepiej będzie uzyć tylko oversamplingu
-7) Dodać hiperparametry
-8) Zastanowić sie nad grid searchem mozna okroić ilość sprawdzanych modeli ale dodać parametry
-9) Train test split chyba za bardzo okraja ilość danych - zastanowić się nad tym podziałem, zwiększyć udział
-10) Grid search powinien posiadać parametr sugerujacy dopasowanie modelu pod interesująca nas metodykę
-11) PCA
-12) KONFJUŻYN MATRIXY w wynikach
+    jako osobne .py (EDA może być jupiter notebookiem) - screen
+    
+
+
+
+
+
+
+
+
+
+
+
+
+1) EDA - Wizualizacja - do eda, PCA, wprowadzić tu standaryzację <- Jules
+     Zmienić uproszczony fit transform dla standaryzacji .fit. .transform() dla train i test <- Angela
+     3) W preprocesingu użyć stratify from sklearn.model_selection import StratifiedKFold (?) <- Angela
+     
+3) Wybór metryka - Angela
+    Zastanowić się nad metryką f1 score <- nie jest zła, ale może coś jeszcze przerobić
+    
+4) Dummy <- Jules
+    5) Dołączyć baseline - może być dummy classifier ale musimy wiedzieć jak przedstawia sie score przed i móc porównać potem
+
+
+6) Datatest split <- Jules
+     Sprawdzić czy nie tniemyh za dużo datasetu
+    4) 6) Sprawdzić shapy przy samplingu i zastanowić się nad tą częscią (moze lepiej będzie uzyć tylko oversamplingu
+    5) 9) Train test split chyba za bardzo okraja ilość danych - zastanowić się nad tym podziałem, zwiększyć udział
+
+8) Klasyfikatory <- Angela
+    7) Dodać hiperparametry
+    8) 8) Zastanowić sie nad grid searchem mozna okroić ilość sprawdzanych modeli ale dodać parametry
+    9) 10) Grid search powinien posiadać parametr sugerujacy dopasowanie modelu pod interesująca nas metodykę
+
+
+9) Finalny kod
+    12) KONFJUŻYN MATRIXY w wynikach
+10) Raport

@@ -33,8 +33,10 @@ Do poprawy:
 
 
 
-1) EDA - Wizualizacja - do eda, PCA, wprowadzić tu standaryzację <- Jules
-     <\n>Zmienić uproszczony fit transform dla standaryzacji .fit. .transform() dla train i test <- Angela
+1) EDA - Wizualizacja - do eda, PCA, <- Jules
+
+
+     <\n>  wprowadzić tu standaryzację, Zmienić uproszczony fit transform dla standaryzacji .fit. .transform() dla train i test <- Angela
      3) W preprocesingu użyć stratify from sklearn.model_selection import StratifiedKFold (?) <- Angela
      
 3) Wybór metryka - Angela
@@ -48,6 +50,7 @@ Do poprawy:
      Sprawdzić czy nie tniemyh za dużo datasetu
     4) 6) Sprawdzić shapy przy samplingu i zastanowić się nad tą częscią (moze lepiej będzie uzyć tylko oversamplingu
     5) 9) Train test split chyba za bardzo okraja ilość danych - zastanowić się nad tym podziałem, zwiększyć udział
+
 
 8) Klasyfikatory <- Angela
     7) Dodać hiperparametry

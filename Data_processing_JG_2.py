@@ -126,7 +126,7 @@ kbest_train, kbest_test = kbest_select(train_std_minmax, test_std_minmax, train_
 
 
 def pca_select(x_1, x_2: np.array) -> np.array:
-    print(f"Shape before transforamtion: {x_1.shape}\n")
+    print(f"Shape before transformation: {x_1.shape}\n")
 
     scaler = MinMaxScaler(feature_range=(0, 1))
     pca = PCA(n_components=100, random_state=seed)

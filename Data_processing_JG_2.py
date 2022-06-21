@@ -1,3 +1,5 @@
+# Libraries
+
 import os
 from collections import Counter
 import numpy as np
@@ -26,6 +28,9 @@ from hyperopt import tpe
 
 import neptune.new as neptune
 
+
+# NEPTUN
+""" Netune api token"""
 run = neptune.init(
     project="julia.grzegorowska/ml-project",
     api_token="eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiI0YzMwMDM2OC04YzdlLTQxOGEtYmEzYi0xZTA3ZmQzMjlkNzIifQ==",

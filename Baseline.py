@@ -41,7 +41,7 @@ def main():
     plt.xlabel("False Positive Rate", fontsize=16)
     plt.ylabel("True Positive Rate", fontsize=16)
     plt.legend()
-
+    plt.show()
 
 
 

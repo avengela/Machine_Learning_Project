@@ -18,30 +18,12 @@ The size of the dataset for this project is to large for github repo (exceeds Gi
 ________
 Do poprawy:
 
-1) Podzielić EDA, preprocesing z przerobieniem danych, Grid search, validację, efekt końcowy z porównaniem danych wejściowych przechodzących przez najlepsza metodę
-    jako osobne .py (EDA może być jupiter notebookiem) - screen
-    
-
-
-
-
-
-
-
-
-
-
-
-
 1) EDA - Wizualizacja - do eda, PCA, <- Jules
 
 
      <\n>  wprowadzić tu standaryzację, Zmienić uproszczony fit transform dla standaryzacji .fit. .transform() dla train i test <- Angela
      3) W preprocesingu użyć stratify from sklearn.model_selection import StratifiedKFold (?) <- Angela
-     
-3) Wybór metryka - Angela
-    Zastanowić się nad metryką f1 score <- nie jest zła, ale może coś jeszcze przerobić
-    
+   
 4) Dummy <- Jules
     5) Dołączyć baseline - może być dummy classifier ale musimy wiedzieć jak przedstawia sie score przed i móc porównać potem
 

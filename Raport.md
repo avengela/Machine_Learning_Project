@@ -24,27 +24,110 @@ Prepare a report (saved as report.md)with the explanations on how you came up wi
 <a name="EDA"></a>
 ## EDA
 
+A basic check of data quality was performed. 
+“Train_data” is a dataset containing 10 000 columns and 3750 rows. 
+No duplicated and null data was identified within the dataset. 
 
+However train_labels, that are to be predicted for test dataset, are unbalanced and the
+values are binary.
+
+    pandas.DataFrame.info() 
+    pandas.DataFrame.describe() 
+    pandas.DataFrame.describe() 
+    pandas.DataFrame.shape
+    pandas.DataFrame.isnull()
+    pandas.DataFrame.value_counts()
+
+Later, after using some preprocessing methods such as:
+
+...
+
+
+Some plots were also made for dataset.
+
+
+<might be useful to add here saved plots (img)>
+...
+
+To sum up:
+- binary classification needs to be considered why making model
+- unbalanced labels were treated by oversampling method to make them more balanced
+- multidimensional dataset was reduced by pca and ....
 
 <a name="Metric"></a>
 ## Metric
 
-
+As our y is imbalanced we firmly reject accuracy. After all for our final results the most important was the biggest amount
+of predicted True Positive and False Positive. And so we decided to stick with F-Measure, combining both Precision and 
+Recall.
 
 <a name="Baseline"></a>
-## Baseline split
+## Baseline
 
+For baseline we use:
+
+    sklearn.dummy.DummyClassifier()
+
+Also for the baseline (and not processed data) we checked:
+
+    sklearn.metrics.f1_score
+    sklearn.metrics.ConfusionMatrixDisplay
+    sklearn.metrics.classification_report
 
 
 <a name="Dataset_split"></a>
-## Dataset
+## Dataset split
+
+    seed = np.random.seed(147)
+    X_train, X_test, y_train, y_test = train_test_split(train_data_preprocessed, train_labels_preprocessed,
+                                                        test_size=0.25, random_state=seed,
+                                                        stratify=train_labels_preprocessed)
 
 
 
 <a name="Classification"></a>
 ## Classification
 
+We have chosen our classifiers based on our earlier results with GridSearch() and Hyperopt() (still to be found in branch
+...). 
 
+Hyperopt picked SVC, so we wanted to check that with more parameters, but as we discovered that SVC() itself tends to be slow,
+we decided to use LinearSVC instead.
+
+Gridsearch comparing way more classifications as results give us ExtraTreesClassifier() and so we wanted to check that
+in final result.
+
+KNeighborsClassifier() is here just to check the results with slightly more basic classifier.
+
+
+        search_space = [
+            {"classifier": [LinearSVC(max_iter=10000, dual=False, random_state=seed)],
+             "classifier__penalty": ["l1", "l2"],
+             "classifier__C": np.logspace(1, 10, 25),
+             "classifier__class_weight": [None, "balanced"]
+             },
+
+            {"classifier": [KNeighborsClassifier()],
+             "classifier__n_neighbors": np.arange(2, 60, 2),
+             "classifier__weights": ["uniform", "distance"],
+             "classifier__algorithm": ["auto", "ball_tree", "kd_tree"],
+             "classifier__leaf_size": np.arange(2, 60, 2)
+             },
+
+            {"classifier": [ExtraTreesClassifier(random_state=seed)],
+             "classifier__n_estimators": np.arange(90, 135, 1),
+             "classifier__criterion": ["gini", "entropy"],
+             "classifier__class_weight": [None, "balanced", "balanced_subsample"],
+             "classifier__min_samples_split": np.arange(2, 5, 1)
+             }
+        ]
+
+As the results we get:
+
+    Best model params: 
+    {'classifier': ExtraTreesClassifier(min_samples_split=4, n_estimators=108), 
+    'classifier__class_weight': None, 'classifier__criterion': 'gini', 'classifier__min_samples_split': 4,
+    'classifier__n_estimators': 108}
 
 <a name="Final_code"></a>
 ## Final code

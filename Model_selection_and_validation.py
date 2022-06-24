@@ -1,29 +1,28 @@
 def main():
-    ##!pip install --upgrade --quiet neptune-client
-    ##!pip install neptune-optuna
-
     import pandas as pd
     import matplotlib.pyplot as plt
     import numpy as np
-    import random
-    import os
-    import joblib
-    from sklearn.model_selection import GridSearchCV
-    from sklearn.model_selection import train_test_split, RepeatedStratifiedKFold
 
-    from sklearn.svm import  LinearSVC
+    import joblib
+    import neptune.new as neptune
+    import os
+
+    from imblearn.pipeline import Pipeline
+
+    from sklearn.model_selection import train_test_split
+    from sklearn.model_selection import GridSearchCV
+    from sklearn.model_selection import RepeatedStratifiedKFold
+
+    from sklearn.svm import LinearSVC
     from sklearn.neighbors import KNeighborsClassifier
     from sklearn.ensemble import ExtraTreesClassifier
 
     from sklearn.metrics import f1_score
-    from sklearn.metrics import ConfusionMatrixDisplay, classification_report
-    import neptune.new as neptune
-    from imblearn.pipeline import Pipeline
-
+    from sklearn.metrics import ConfusionMatrixDisplay
+    from sklearn.metrics import classification_report
 
     os.environ["OMP_NUM_THREADS"] = "1"
-
-    seed = random.seed(147)
+    seed = np.random.seed(147)
 
     # Neptune
     run = neptune.init(
@@ -49,17 +48,23 @@ def main():
         """Stop running Neptune and sending data/end the program"""
         run.stop()
 
-
+    # Data access
     test_data_preprocessed = np.load("project_data/processed_test_X.npy")
     train_data_preprocessed = np.load("project_data/processed_train_X.npy")
     train_labels_preprocessed = np.load("project_data/processed_train_y.npy")
 
-
-    X_train, X_test, y_train, y_test = train_test_split(train_data_preprocessed, train_labels_preprocessed, test_size=0.25, random_state=seed)
-
+    X_train, X_test, y_train, y_test = train_test_split(train_data_preprocessed, train_labels_preprocessed,
+                                                        test_size=0.25, random_state=seed,
+                                                        stratify=train_labels_preprocessed)
 
     # Validation
-    def grid_search_pipeline(X_train: np.array,X_test: np.array, y_train: np.array)-> np.array:
+    def grid_search_pipeline(X_training: np.array, X_testing: np.array, y_training: np.array) -> np.array:
+        """
+        GridSearch with LinearSVC, KNeighborsClassifier, ExtraTreesClassifier
+        searching for best model
+        Shows best_score_ and best_params_
+        Save best model for future use
+        """
 
         pipe = Pipeline([("classifier", KNeighborsClassifier())])
 
@@ -87,8 +92,8 @@ def main():
         rskf = RepeatedStratifiedKFold(n_splits=5, n_repeats=5, random_state=seed)
         gridsearch = GridSearchCV(pipe, search_space, cv=3, scoring="f1", verbose=1, n_jobs=-1)
 
-        best_model = gridsearch.fit(X_train, y_train)
-        y_pred = best_model.predict(X_test)
+        best_model = gridsearch.fit(X_training, y_training)
+        y_predict = best_model.predict(X_testing)
 
         print(f"\nBest model params: \n{best_model.best_params_}")
         print(f"\nModel scorer: \n{best_model.scorer_}")
@@ -98,21 +103,27 @@ def main():
         joblib.dump(best_model, filename)
 
         single_record(best_model.best_score_, "model_score")
-        send_data_neptune(y_pred.tolist(), 'y_pred')
+        send_data_neptune(y_predict.tolist(), 'y_pred')
 
-        return y_pred
+        return y_predict
 
     y_pred = grid_search_pipeline(X_train, X_test, y_train)
 
-    # classification report. Build confusion matrix and plot
+    # Confusion matrix, classification report and f1 score itself
     print(classification_report(y_test, y_pred))
 
     ConfusionMatrixDisplay.from_predictions(y_test, y_pred)
     plt.show()
 
+    f1 = f1_score(y_test, y_pred)
+    print(f"f1 score: {f1:.3f}")
 
-    #Execution
-    def load_predict_model(to_pred):
+    # Execution
+    def load_predict_model(to_pred: np.array) -> np.array:
+        """
+        Loading best model indicated earlier by grid search
+        and predicting y for test data
+        """
 
         filename = "clf_model.sav"
         loaded_model = joblib.load(filename)
@@ -127,6 +138,9 @@ def main():
     y_test.to_csv("project_data/test_labels.csv")
 
     print(y_test)
+
+    stop_run()
+
 
 if __name__ == '__main__':
     main()

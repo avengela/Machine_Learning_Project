@@ -15,6 +15,9 @@ def main():
 
 
     def data_info(df: list, name: list) -> None:
+        """
+        Shows data_info of given data frames
+        """
         for d, n in zip(df, name):
             print(n, '\n')
             d.info()
@@ -26,6 +29,9 @@ def main():
 
 
     def data_describe(df: list, name: list) -> None:
+        """
+        Shows data_describe of given data frames
+        """
         for d, n in zip(df, name):
             print(n, '\n')
             print(d.describe())
@@ -37,6 +43,9 @@ def main():
 
 
     def data_duplicates(df: list, name: list) -> None:
+        """
+        Shows if data sets have duplicate values
+        """
         for d, n in zip(df, name):
             print(n, '\n')
             print(d[d.duplicated()].shape)
@@ -48,6 +57,10 @@ def main():
 
 
     def data_null_values(df: list, name: list) -> None:
+        """
+        Shows if data sets have null values
+        """
+
         for d, n in zip(df, name):
             print(n, '\n')
             print(round(d.isnull().sum() / len(d) * 100, 2)[0], '%')

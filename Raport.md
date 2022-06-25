@@ -99,8 +99,8 @@ Here we used:
 
     imblearn.over_sampling.RandomOverSampler
     
-[![Scatter plot]
-(https://github.com/avengela/Machine_Learning_Project/blob/main/plots_file/scatter_plot.jpg)] (#Scatter)
+![box_plot](https://user-images.githubusercontent.com/100999656/175770546-c95301bc-f7d6-4411-94c2-496f750ac9a2.jpg)
+
 
 ...
 

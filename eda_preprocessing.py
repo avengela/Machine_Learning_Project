@@ -307,6 +307,11 @@ correlation_heatmap(df)
 
 
 def correlation_matrix(data: pd.DataFrame) -> plt:
+    """
+    Correlation matrix for preprocessed train data
+    :param data: pd.DataFrame: of train data after over and undersampling
+    :return: plt: correlation matrix
+    """
     corr = data.corr()
     f, ax = plt.subplots(figsize=(10, 10))
     sns.heatmap(corr, ax=ax, annot=True, linewidths=3, cmap="YlGn")
@@ -317,6 +322,24 @@ def correlation_matrix(data: pd.DataFrame) -> plt:
 
 
 correlation_matrix(df)
+
+
+def box_plot(data: pd.DataFrame) -> plt:
+    """
+    Box plot for preprocessed train data
+    :param data: pd.DataFrame: of train data after over and undersampling
+    :return: plt: box plot
+    """
+
+    plt.figure(figsize=(15.2, 8))
+    sns.boxplot(data=data)
+    plt.title("Box plot for preprocessed train data")
+    plt.savefig('plots_file/box_plot.jpg')
+
+    return plt.show()
+
+
+box_plot(df)
 
 
 def main():

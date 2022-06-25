@@ -31,62 +31,47 @@ No duplicated and null data was identified within the dataset.
 However train_labels, that are to be predicted for test dataset, are unbalanced and the
 values are binary.
 
-    pandas.DataFrame.info() 
-    pandas.DataFrame.describe() 
-    pandas.DataFrame.describe() 
-    pandas.DataFrame.shape
-    pandas.DataFrame.isnull()
-    pandas.DataFrame.value_counts()
 
-Later, after using some preprocessing methods such as:
+Later, after using some **preprocessing methods such as standarization and normalization.**
+<br />
+<br />
 
-standarization using:
+Because we have a large dataset for training to procees at the beggining, we used **Univariate Feature Selection (SelectKBest method)** which selects the features according to the k highest score. We could apply the method for both classification and regression data. 
+
+### Univariate Feature Selection ####
     
-    sklearn.pipeline.Pipeline
-    sklearn.preprocessing.StandardScaler
+| Shape before | (3750, 10000) |
+|--------------|---------------|
+| Shape after  | (3750, 3177)  |
 
- and normalization using:
- 
-    sklearn.preprocessing.MinMaxScaler
-
-We used Univariate Feature Selection 
-
-    sklearn.feature_selection.SelectKBest
-    
-    
-    Univariate Selection(Kbest selection):
-    
-    Shape before transformation: (3750, 10000)
-    Min score: 1.7567042700994732e-09, max score: 17.321255892491074, mean score: 1.000380011727585
-    Shape after transformation: (3750, 3333)
-    Univariate Selection(Kbest selection)
-    Shape before transformation: (3750, 10000)
-    Min score: 1.7567042700994732e-09, max score: 17.321255892491074, mean score: 1.000380011727585
-    Shape after transformation: (3750, 3177)
+| min score | max score | Mean score |
+|-----------|-----------|------------|
+| 1.76      | 17.32     | 1.00038    |
 
 
-to get rid of noisy data
-and PCA reshaping data to examine std and get rid of extreme data. Because dataset have more columns than rows
+<br />
+<br />
+
+To get rid of noisy data
+and PCA reshaping data to examine std and get rid of extreme data. Because ourdataset have more columns than rows PCA helped us manage it in easy way.
+
+### PCA - Principal component analysis ###
 
 
-   
-to fits a model and removes the weakest feature (or features) until the specified number of features is reached we used RFE
-    
-    sklearn.feature_selection.RFE
-    
-    
-    RFE - Recursive Feature Elimination
+| Shape before | (3750, 3177) |
+|--------------|--------------|
+| Shape after  | (3750, 100)  |
 
-    Shape before transformation: (3750, 100)
+<br />
+<br />
 
-    Feature Ranking: 
-    [ 1 12  1 79 78  1  2  4 83 72  9 47  7 76 63 82 46  1  5 66 15 23 96 30
-     48  3 61 77 55 13 85 42 81 18 32 53 27 68 25 57 69 20 28 24 11 80 10 40
-     59 75 43 70 67 87 93 26 52 31 21 90 39 62 14  8 35 34 88 95 29 58 56 84
-     54  6 71 22 86 33 49 74 65 17 37 45 41 89 50 60 44  1 36 91 19 51 92 38
-     64 16 94 73]
+To fits a model and removes the weakest feature (or features) until the specified number of features is reached we used RFE.
 
-    Shape after transformation: (3750, 5)
+### RFE - Recursive Feature Elimination ###
+
+| Shape before | (3750, 100) |
+|--------------|--------------|
+| Shape after  | (3750, 5)  |
 
 
 Later trying to understand and set data types, data mixtures, shape, outliers, missing values, noisy data, skewness and kurtosis by creating heatmaps, matrix plots and others.
@@ -98,8 +83,19 @@ Later trying to understand and set data types, data mixtures, shape, outliers, m
 Here we used:
 
     imblearn.over_sampling.RandomOverSampler
-    
+
+
+and generate some plot
+
+![scatter_plot](https://user-images.githubusercontent.com/100999656/175771732-bdb514a2-278c-4631-a792-8c31e0c4f546.jpg)
+
+![correlation_heatmap](https://user-images.githubusercontent.com/100999656/175771715-ffbf2586-39d7-4b86-bde2-16d3e1661479.jpg)
+
+![correlation_matrix](https://user-images.githubusercontent.com/100999656/175771723-98aaf3c5-4042-45b1-9ab8-b787650b583e.jpg)
+
 ![box_plot](https://user-images.githubusercontent.com/100999656/175770546-c95301bc-f7d6-4411-94c2-496f750ac9a2.jpg)
+
+
 
 
 ...

@@ -334,5 +334,6 @@ def main():
 
     box_plot(df)
 
+
 if __name__ == "__main__":
     main()

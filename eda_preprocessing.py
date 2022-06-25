@@ -322,3 +322,13 @@ def main():
         main()
 
 
+if __name__ == "__main__":
+    try:
+        os.mkdir(SAVE_DIR)
+    except:
+        pass
+    anscombe_df, x, x4 = anscombe_data()
+    description = stats(anscombe_df)
+    description.to_csv(os.path.join(SAVE_DIR, "stats.csv"))
+    fig = anscombe_plot(anscombe_df, x, x4)
+    fig.savefig(os.path.join(SAVE_DIR, "chart.jpg"))

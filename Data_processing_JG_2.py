@@ -2,22 +2,34 @@
 
 import os
 from collections import Counter
-
-import matplotlib.pyplot as plt
-import neptune.new as neptune
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from imblearn.over_sampling import RandomOverSampler
-from imblearn.pipeline import Pipeline
-from imblearn.under_sampling import RandomUnderSampler
-from sklearn.decomposition import PCA
-from sklearn.feature_selection import SelectKBest, f_classif, RFE
+import matplotlib.pyplot as plt
+
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
-from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, Binarizer
+from sklearn.decomposition import PCA
+from sklearn.model_selection import GridSearchCV, cross_val_score, RepeatedStratifiedKFold, train_test_split
+from sklearn.feature_selection import SelectKBest, chi2, f_classif, RFE
+from sklearn.svm import SVC, LinearSVC
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, ExtraTreesClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import f1_score
+
+from imblearn.pipeline import Pipeline
+from imblearn.over_sampling import RandomOverSampler
+from imblearn.under_sampling import RandomUnderSampler
+from hpsklearn import HyperoptEstimator, any_classifier, any_preprocessing
+from hyperopt import tpe
+
+import neptune.new as neptune
 
 # NEPTUNE
+from sklearn.tree import DecisionTreeClassifier
 
 """ Netune api token:
 Neptune is a metadata store for MLOps, built for teams that run a lot of experiments.
@@ -111,6 +123,7 @@ def pipeline_standard_minmax(X_1, X_2: pd.DataFrame) -> np.array:
 
 train_std_minmax, test_std_minmax = pipeline_standard_minmax(train_data, test_data)
 
+## CO ROBI K????
 k = int(len(train_data.columns) / 3)
 
 
@@ -260,7 +273,7 @@ def save_data(train_X: np.array, test_X: np.array, train_y: np.array) -> None:
 
 save_data(X_resampled, rfe_test, y_resampled)
 
-# plots
+
 def scatter_plot(X_1: np.array, y_1: np.array) -> plt:
     counter = Counter(y_1)
 
@@ -307,6 +320,5 @@ def correlation_matrix(data: pd.DataFrame) -> plt:
 
     return plt.show()
 
-
+JKHUI
 correlation_matrix(df)
-

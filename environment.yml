@@ -5,25 +5,19 @@ channels:
 dependencies:
   - python == 3.8.10
   - pandas
-  - isort
-  - altair
-  - altair_viewer
-  - altair_saver
   - matplotlib
-  - seaborn
   - numpy
   - scikit-learn
+  - pip
+  - pip:
+      - git+https://github.com/hyperopt/hyperopt-sklearn.git
+  - imbalanced-learn
+  - neptune-client
+  - neptune-optuna
+  - isort
+  - seaborn
   - scipy
   - vega
-  - neptune-client
-  - joblib
-  - pip
-  - neptune-optuna
-  - imbalanced-learn
   - hyperopt
   - imblearn
   - future == 0.13.1
-  - pip:
-    - git+https://github.com/hyperopt/hyperopt-sklearn.git
-  - imbalanced-learn
-  - neptune-client

@@ -13,33 +13,6 @@ Prepare a report (saved as report.md)with the explanations on how you came up wi
 # Dataset
 The size of the dataset for this project is to large for github repo (exceeds GitHub's file size limit of 100.00 MB). The dataset can be obtained from [here](https://drive.google.com/drive/folders/1K4IQxSH--gfMZdovzGfuYjDXUF1r2TqF?usp=sharing)
 
-
-
-________
-Do poprawy:
-
-1) EDA - Wizualizacja - do eda, PCA, <- Jules
-
-
      <\n>  wprowadzić tu standaryzację, Zmienić uproszczony fit transform dla standaryzacji .fit. .transform() dla train i test <- Angela
      3) W preprocesingu użyć stratify from sklearn.model_selection import StratifiedKFold (?) <- Angela
-   
-4) Dummy <- Jules
-    5) Dołączyć baseline - może być dummy classifier ale musimy wiedzieć jak przedstawia sie score przed i móc porównać potem
 
-
-6) Datatest split <- Jules
-     Sprawdzić czy nie tniemyh za dużo datasetu
-    4) 6) Sprawdzić shapy przy samplingu i zastanowić się nad tą częscią (moze lepiej będzie uzyć tylko oversamplingu
-    5) 9) Train test split chyba za bardzo okraja ilość danych - zastanowić się nad tym podziałem, zwiększyć udział
-
-
-8) Klasyfikatory <- Angela
-    7) Dodać hiperparametry
-    8) 8) Zastanowić sie nad grid searchem mozna okroić ilość sprawdzanych modeli ale dodać parametry
-    9) 10) Grid search powinien posiadać parametr sugerujacy dopasowanie modelu pod interesująca nas metodykę
-
-
-9) Finalny kod
-    12) KONFJUŻYN MATRIXY w wynikach
-10) Raport

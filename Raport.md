@@ -63,7 +63,16 @@ to fits a model and removes the weakest feature (or features) until the specifie
     sklearn.feature_selection.RFE
 
 
-Later trying to understand and set data types, data mixtures, shape, outliers, missing values, noisy data, skewness and kurtosis by creating heatmaps, matrix plots and others
+Later trying to understand and set data types, data mixtures, shape, outliers, missing values, noisy data, skewness and kurtosis by creating heatmaps, matrix plots and others.
+
+ While calling .value_count() on data, was that our dataset was unbalanced so the solution was to call:
+- Random Undersampling
+- [Oversampling / SMOTE](https://en.wikipedia.org/wiki/Oversampling_and_undersampling_in_data_analysis)
+
+Here we used:
+
+    imblearn.over_sampling.RandomOverSampler
+    
 
 ...
 

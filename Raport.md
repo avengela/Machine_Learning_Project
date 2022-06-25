@@ -40,6 +40,40 @@ values are binary.
 
 Later, after using some preprocessing methods such as:
 
+standarization using:
+    
+    sklearn.pipeline.Pipeline
+    sklearn.preprocessing.StandardScaler
+
+ and normalization using:
+ 
+    sklearn.preprocessing.MinMaxScaler
+
+We used Univariate Feature Selection 
+
+    sklearn.feature_selection.SelectKBest
+
+to get rid of noisy data
+and PCA reshaping data to examine std and get rid of extreme data. 
+
+    sklearn.decomposition.PCA
+   
+to fits a model and removes the weakest feature (or features) until the specified number of features is reached we used RFE
+    
+    sklearn.feature_selection.RFE
+
+
+Later trying to understand and set data types, data mixtures, shape, outliers, missing values, noisy data, skewness and kurtosis by creating heatmaps, matrix plots and others.
+
+ While calling .value_count() on data, was that our dataset was unbalanced so the solution was to call:
+- Random Undersampling
+- [Oversampling / SMOTE](https://en.wikipedia.org/wiki/Oversampling_and_undersampling_in_data_analysis)
+
+Here we used:
+
+    imblearn.over_sampling.RandomOverSampler
+    
+
 ...
 
 

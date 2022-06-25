@@ -73,9 +73,6 @@ def data_load() -> list:
     return [train_data, test_data, train_labels]
 
 
-train_data, test_data, train_labels = data_load()
-train_labels_ravel = train_labels.values.ravel()
-
 # PREPROCESSING
 
 # Data preprocessing - first step before any machine learning machinery can be applied.
@@ -102,11 +99,6 @@ def pipeline_standard_minmax(x_1, x_2: pd.DataFrame) -> np.array:
     test_std_minmax = pipeline.fit_transform(x_2)
 
     return [train_std_minmax, test_std_minmax]
-
-
-train_std_minmax, test_std_minmax = pipeline_standard_minmax(train_data, test_data)
-
-k = int(len(train_data.columns) / 3)
 
 
 def kbest_select(x_1: np.array, x_2: np.array, y_1: np.array, n_of_kbest: int) -> list:
@@ -145,14 +137,9 @@ def kbest_select(x_1: np.array, x_2: np.array, y_1: np.array, n_of_kbest: int) -
     single_record(np.mean(score_df.Scores), "kbest_select_mean_score")
 
     if df_l != n_of_kbest:
-        return kbest_select(train_std_minmax, test_std_minmax, train_labels_ravel, df_l)
+        return kbest_select(x_1, x_2, y_1, df_l)
     else:
         return [features_first, features_second]
-
-
-kbest_train, kbest_test = kbest_select(
-    train_std_minmax, test_std_minmax, train_labels_ravel, k
-)
 
 
 def pca_select(x_1, x_2: np.array) -> np.array:
@@ -182,9 +169,6 @@ def pca_select(x_1, x_2: np.array) -> np.array:
     return [features_first, features_second]
 
 
-pca_train, pca_test = pca_select(kbest_train, kbest_test)
-
-
 def rfe_select(x_1, x_2, y_1: np.array) -> np.array:
     """
     Recursive Feature Elimination
@@ -211,8 +195,6 @@ def rfe_select(x_1, x_2, y_1: np.array) -> np.array:
 
     return [first_features, second_features]
 
-
-rfe_train, rfe_test = rfe_select(pca_train, pca_test, train_labels_ravel)
 
 """ Dataset is very unbalanced that is why we are using Random Oversampling"""
 
@@ -244,9 +226,6 @@ def random_sampling(x_1: np.array, y_1: np.array) -> list:
     return [x_resampled, y_resampled]
 
 
-x_resampled, y_resampled = random_sampling(rfe_train, train_labels_ravel)
-
-
 # Saving data to npy files
 def save_data(train_x: np.array, test_x: np.array, train_y: np.array) -> None:
     np.save("project_data/processed_train_X.npy", train_x)
@@ -254,9 +233,6 @@ def save_data(train_x: np.array, test_x: np.array, train_y: np.array) -> None:
     np.save("project_data/processed_train_y.npy", train_y)
 
     print("Saving has been completed.")
-
-
-save_data(x_resampled, rfe_test, y_resampled)
 
 
 # plots
@@ -282,11 +258,6 @@ def scatter_plot(x_1: np.array, y_1: np.array) -> plt:
     return plt.show()
 
 
-scatter_plot(x_resampled, y_resampled)
-
-df = pd.DataFrame(x_resampled, index=None, columns=None)
-
-
 def correlation_heatmap(data: pd.DataFrame) -> plt:
     """
     Correlation heatmap for preprocessed train data
@@ -301,9 +272,6 @@ def correlation_heatmap(data: pd.DataFrame) -> plt:
     plt.savefig('plots_file/correlation_heatmap.jpg')
 
     return plt.show()
-
-
-correlation_heatmap(df)
 
 
 def correlation_matrix(data: pd.DataFrame) -> plt:
@@ -321,9 +289,6 @@ def correlation_matrix(data: pd.DataFrame) -> plt:
     return plt.show()
 
 
-correlation_matrix(df)
-
-
 def box_plot(data: pd.DataFrame) -> plt:
     """
     Box plot for preprocessed train data
@@ -339,11 +304,35 @@ def box_plot(data: pd.DataFrame) -> plt:
     return plt.show()
 
 
-box_plot(df)
-
-
 def main():
+    train_data, test_data, train_labels = data_load()
 
-    if __name__ == "__main__":
-        main()
+    train_labels_ravel = train_labels.values.ravel()
 
+    train_std_minmax, test_std_minmax = pipeline_standard_minmax(train_data, test_data)
+
+    k = int(len(train_data.columns) / 3)
+
+    kbest_train, kbest_test = kbest_select(
+        train_std_minmax, test_std_minmax, train_labels_ravel, k)
+
+    pca_train, pca_test = pca_select(kbest_train, kbest_test)
+
+    rfe_train, rfe_test = rfe_select(pca_train, pca_test, train_labels_ravel)
+
+    x_resampled, y_resampled = random_sampling(rfe_train, train_labels_ravel)
+
+    save_data(x_resampled, rfe_test, y_resampled)
+
+    scatter_plot(x_resampled, y_resampled)
+
+    df = pd.DataFrame(x_resampled, index=None, columns=None)
+
+    correlation_heatmap(df)
+
+    correlation_matrix(df)
+
+    box_plot(df)
+
+if __name__ == "__main__":
+    main()

@@ -58,7 +58,8 @@ and PCA reshaping data to examine std and get rid of extreme data.
 
     sklearn.decomposition.PCA
    
-to fits a model and removes the weakest feature (or features) until the specified number of features is reached we used RFE:
+to fits a model and removes the weakest feature (or features) until the specified number of features is reached we used RFE
+    
     sklearn.feature_selection.RFE
 
 

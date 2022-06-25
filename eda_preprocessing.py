@@ -276,6 +276,7 @@ def scatter_plot(x_1: np.array, y_1: np.array) -> plt:
             edgecolor="black",
         )
     plt.title(f"Scatter plot for preprocessed data with {counter}")
+    plt.savefig('plots_file/scatter_plot.jpg')
     plt.legend()
 
     return plt.show()
@@ -297,6 +298,7 @@ def correlation_heatmap(data: pd.DataFrame) -> plt:
     heat_mask = np.triu(np.ones_like(data.corr(), dtype=bool))
     sns.heatmap(data.corr(), mask=heat_mask, vmin=-1, vmax=1, annot=True)
     plt.title("Correlation heatmap for preprocessed train data")
+    plt.savefig('plots_file/correlation_heatmap.jpg')
 
     return plt.show()
 
@@ -309,6 +311,7 @@ def correlation_matrix(data: pd.DataFrame) -> plt:
     f, ax = plt.subplots(figsize=(10, 10))
     sns.heatmap(corr, ax=ax, annot=True, linewidths=3, cmap="YlGn")
     plt.title("Pearson correlation of Features", y=1.05, size=15)
+    plt.savefig('plots_file/correlation_matrix.jpg')
 
     return plt.show()
 

@@ -134,3 +134,35 @@ As the results we get:
 
 <a name="Results"></a>
 ## Results
+
+
+Best model params: 
+{'classifier': KNeighborsClassifier(leaf_size=2, n_neighbors=58, weights='distance'), 'classifier__algorithm': 'auto', 'classifier__leaf_size': 2, 'classifier__n_neighbors': 58, 'classifier__weights': 'distance'}
+
+Model scorer: 
+make_scorer(f1_score, average=binary)
+
+Model score: 
+0.9424050742790956
+              precision    recall  f1-score   support
+
+          -1       0.85      0.84      0.85       169
+           1       0.92      0.93      0.92       338
+
+    accuracy                           0.90       507
+   macro avg       0.89      0.88      0.88       507
+weighted avg       0.90      0.90      0.90       507
+
+    f1 score: 0.923
+          0
+    0     1
+    1     1
+    2     1
+    3     1
+    4     1
+    ...  ..
+    1245  1
+    1246  1
+    1247  1
+    1248  1
+    1249  1

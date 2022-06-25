@@ -89,8 +89,8 @@ def main():
              "classifier__min_samples_split": np.arange(2, 5, 1)
              }
         ]
-        rskf = RepeatedStratifiedKFold(n_splits=5, n_repeats=5, random_state=seed)
-        gridsearch = GridSearchCV(pipe, search_space, cv=3, scoring="f1", verbose=1, n_jobs=-1)
+        rskf = RepeatedStratifiedKFold(n_splits=10, n_repeats=5, random_state=seed)
+        gridsearch = GridSearchCV(pipe, search_space, cv=rskf, scoring="f1", verbose=1, n_jobs=-1)
 
         best_model = gridsearch.fit(X_training, y_training)
         y_predict = best_model.predict(X_testing)

@@ -12,7 +12,3 @@ Prepare a report (saved as report.md)with the explanations on how you came up wi
 
 # Dataset
 The size of the dataset for this project is to large for github repo (exceeds GitHub's file size limit of 100.00 MB). The dataset can be obtained from [here](https://drive.google.com/drive/folders/1K4IQxSH--gfMZdovzGfuYjDXUF1r2TqF?usp=sharing)
-
-     <\n>  wprowadzić tu standaryzację, Zmienić uproszczony fit transform dla standaryzacji .fit. .transform() dla train i test <- Angela
-     3) W preprocesingu użyć stratify from sklearn.model_selection import StratifiedKFold (?) <- Angela
-

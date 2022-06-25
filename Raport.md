@@ -66,38 +66,9 @@ We used Univariate Feature Selection
 
 
 to get rid of noisy data
-and PCA reshaping data to examine std and get rid of extreme data. 
+and PCA reshaping data to examine std and get rid of extreme data. Because dataset have more columns than rows
 
-    sklearn.decomposition.PCA
-    
-    
-    PCA - Principal Component Analysis
 
-    Shape before transformation: (3750, 3177)
-
-    Explained Variance: 
-    [0.00119644 0.0011572  0.00114932 0.00114815 0.00114109 0.00113676
-     0.0011336  0.00113102 0.00112559 0.00112421 0.00111666 0.00111646
-     0.00111411 0.00110989 0.00110611 0.00110364 0.00109874 0.00109676
-     0.00109307 0.00109102 0.0010901  0.00108277 0.00108163 0.0010793
-     0.00107742 0.00107588 0.00107237 0.00106929 0.00106777 0.00106614
-     0.00106504 0.00106352 0.0010601  0.00105923 0.00105696 0.00105041
-     0.00104802 0.00104656 0.00104519 0.00104268 0.00104112 0.00104055
-     0.00103838 0.00103691 0.00103446 0.00102977 0.0010284  0.00102667
-     0.00102507 0.00102168 0.00101906 0.00101652 0.00101368 0.00101249
-     0.00101097 0.00101016 0.00100867 0.00100588 0.00100427 0.00100261
-     0.00100051 0.00099868 0.00099487 0.00099332 0.00099223 0.00098997
-     0.00098815 0.00098489 0.00098367 0.00098203 0.00097907 0.00097823
-     0.00097593 0.00097449 0.00096828 0.00096637 0.00096389 0.00096264
-     0.00096064 0.00095803 0.00095728 0.00095593 0.00095393 0.00095246
-     0.00095021 0.000948   0.00094427 0.00094343 0.00094096 0.00094048
-     0.00093632 0.00093286 0.00093093 0.00092972 0.00092523 0.00092259
-     0.00092128 0.00091892 0.00091447 0.00091426]
-    Warning: string series 'monitoring/stdout' value was longer than 1000 characters and was truncated. This warning is printed only once per series.
-
-    Shape after transformation: (3750, 100)
-    
-    
    
 to fits a model and removes the weakest feature (or features) until the specified number of features is reached we used RFE
     
@@ -128,6 +99,8 @@ Here we used:
 
     imblearn.over_sampling.RandomOverSampler
     
+![box_plot](https://user-images.githubusercontent.com/100999656/175770546-c95301bc-f7d6-4411-94c2-496f750ac9a2.jpg)
+
 
 ...
 

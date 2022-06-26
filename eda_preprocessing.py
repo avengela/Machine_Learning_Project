@@ -306,32 +306,19 @@ def box_plot(data: pd.DataFrame) -> plt:
 
 def main():
     train_data, test_data, train_labels = data_load()
-
     train_labels_ravel = train_labels.values.ravel()
-
     train_std_minmax, test_std_minmax = pipeline_standard_minmax(train_data, test_data)
-
     k = int(len(train_data.columns) / 3)
-
     kbest_train, kbest_test = kbest_select(
         train_std_minmax, test_std_minmax, train_labels_ravel, k)
-
     pca_train, pca_test = pca_select(kbest_train, kbest_test)
-
     rfe_train, rfe_test = rfe_select(pca_train, pca_test, train_labels_ravel)
-
     x_resampled, y_resampled = random_sampling(rfe_train, train_labels_ravel)
-
     save_data(x_resampled, rfe_test, y_resampled)
-
     scatter_plot(x_resampled, y_resampled)
-
     df = pd.DataFrame(x_resampled, index=None, columns=None)
-
     correlation_heatmap(df)
-
     correlation_matrix(df)
-
     box_plot(df)
 
 

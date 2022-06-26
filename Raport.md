@@ -85,26 +85,27 @@ Here we used:
     imblearn.over_sampling.RandomOverSampler
 
 
-and generate some plot
+and generate some plots:
+
+#### Summarize class distribution and plot scatter for preprocessed train data
 
 ![scatter_plot](https://user-images.githubusercontent.com/100999656/175771732-bdb514a2-278c-4631-a792-8c31e0c4f546.jpg)
 
+#### Correlation heatmap for preprocessed train data
+
 ![correlation_heatmap](https://user-images.githubusercontent.com/100999656/175771715-ffbf2586-39d7-4b86-bde2-16d3e1661479.jpg)
 
+#### Pearson correlation matrix for preprocessed train data
+
 ![correlation_matrix](https://user-images.githubusercontent.com/100999656/175771723-98aaf3c5-4042-45b1-9ab8-b787650b583e.jpg)
+
+####  Box plot for preprocessed train data
 
 ![box_plot](https://user-images.githubusercontent.com/100999656/175770546-c95301bc-f7d6-4411-94c2-496f750ac9a2.jpg)
 
 
 
 
-...
-
-
-Some plots were also made for dataset.
-
-
-<might be useful to add here saved plots (img)>
 ...
 
 To sum up:

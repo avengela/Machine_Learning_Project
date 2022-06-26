@@ -304,7 +304,7 @@ def box_plot(data: pd.DataFrame) -> plt:
     return plt.show()
 
 
-def main():
+def main() -> None:
     train_data, test_data, train_labels = data_load()
     train_labels_ravel = train_labels.values.ravel()
     train_std_minmax, test_std_minmax = pipeline_standard_minmax(train_data, test_data)

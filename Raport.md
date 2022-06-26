@@ -40,9 +40,9 @@ Because we have a large dataset for training to procees at the beggining, we use
 
 ### Univariate Feature Selection ####
     
-| Shape before | (3750, 10000) |
-|--------------|---------------|
-| Shape after  | (3750, 3177)  |
+| Shape before   | Shape after  |
+|----------------|--------------|
+| (3750, 100000) | (3750, 3177) |
 
 | min score | max score | Mean score |
 |-----------|-----------|------------|
@@ -58,9 +58,9 @@ and PCA reshaping data to examine std and get rid of extreme data. Because ourda
 ### PCA - Principal component analysis ###
 
 
-| Shape before | (3750, 3177) |
-|--------------|--------------|
-| Shape after  | (3750, 100)  |
+| Shape before   | Shape after  |
+|----------------|--------------|
+|  (3750, 3177)  |  (3750, 100) |
 
 <br />
 <br />
@@ -69,9 +69,9 @@ To fits a model and removes the weakest feature (or features) until the specifie
 
 ### RFE - Recursive Feature Elimination ###
 
-| Shape before | (3750, 100) |
-|--------------|--------------|
-| Shape after  | (3750, 5)  |
+| Shape before   | Shape after  |
+|----------------|--------------|
+|  (3750, 100)   |  (3750, 5)   |
 
 
 Later trying to understand and set data types, data mixtures, shape, outliers, missing values, noisy data, skewness and kurtosis by creating heatmaps, matrix plots and others.

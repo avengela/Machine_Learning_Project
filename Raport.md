@@ -182,7 +182,8 @@ As the results we get:
     'classifier__n_neighbors': 58, 
     'classifier__weights': 'distance'}
     
-  ![Baseline_Raw_data_matrix](https://user-images.githubusercontent.com/90214121/175791044-c78342b8-4e44-42fb-8a58-9a962f836166.png)
+![Final_model_matrix_plot](https://user-images.githubusercontent.com/90214121/175805300-6ec89281-9015-4f31-8fe3-520b327aedc4.png)
+
   
   With the f1_score 0.92 for 1 and 0.85 for -1 class.
   
@@ -199,8 +200,39 @@ As the results we get:
 <a name="Final_code"></a>
 ## Final code
 
-In final code we have load best model and predict test dataset.
+In final code we have loaded best model and predict test dataset.
 
 <a name="Results"></a>
 ## Results
 
+
+Preprocessed:
+
+![Baseline_Preprocessed_data_matrix](https://user-images.githubusercontent.com/90214121/175790778-5498f974-3ec2-4d65-b003-2d2cdedd6832.png)
+
+Final result:
+
+![Final_model_matrix_plot](https://user-images.githubusercontent.com/90214121/175805305-715b0356-18b4-4780-86a8-b3c595e4ef18.png)
+
+ 
+ Preprocessed:
+
+|              | precision | recall | f1-score | support |
+|--------------|-----------|--------|----------|---------|
+| -1           | 0.36      | 0.36   | 0.36     | 169     |
+| 1            | 0.68      | 0.69   | 0.68     | 338     |
+| accuracy     |           |        | 0.58     | 507     |
+| macro avg    | 0.52      | 0.52   | 0.52     | 507     |
+| weighted avg | 0.57      | 0.58   | 0.57     | 507     |
+
+Final result:
+
+|              | precision | recall | f1-score | support |
+|--------------|-----------|--------|----------|---------|
+| -1           | 0.85      | 0.84   | 0.85     | 169     |
+| 1            | 0.92      | 0.93   | 0.92     | 338     |
+| accuracy     |           |        | 0.90     | 507     |
+| macro avg    | 0.89      | 0.88   | 0.88     | 507     |
+| weighted avg | 0.90      | 0.90   | 0.90     | 507     |  
+
+So without doubt our model gives us better results.
